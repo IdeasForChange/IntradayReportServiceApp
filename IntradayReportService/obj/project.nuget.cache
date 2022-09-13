@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "TX5dnbMNU/MW1+Oo+gARHdGDlSVW3YnLRpOdz69gwne0ZR2EACQaTnMNDBjylg9mXsRSNnHOc9PMXO0jyTzumQ==",
+  "dgSpecHash": "djo1/NCn4y05NXDN1mFPbX55zEJIMqBUJ4gvg4RuWG4qA30Nq7G8EHbJaZOxPlgkXiH0hBDalrJsUR0T9C3gQw==",
   "success": true,
-  "projectFilePath": "D:\\WorkSpace\\PetroineosExercise\\IntradayReportServiceApp\\IntradayReportService\\IntradayReportService.csproj",
+  "projectFilePath": "D:\\WorkSpace\\GitHub\\IdeasForChange\\IntradayReportServiceApp\\IntradayReportService\\IntradayReportService.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\rajes\\.nuget\\packages\\microsoft.extensions.logging.abstractions\\6.0.1\\microsoft.extensions.logging.abstractions.6.0.1.nupkg.sha512"
   ],

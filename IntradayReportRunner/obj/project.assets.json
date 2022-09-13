@@ -1377,11 +1377,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\WorkSpace\\PetroineosExercise\\IntradayReportServiceApp\\IntradayReportRunner\\IntradayReportRunner.csproj",
+      "projectUniqueName": "D:\\WorkSpace\\GitHub\\IdeasForChange\\IntradayReportServiceApp\\IntradayReportRunner\\IntradayReportRunner.csproj",
       "projectName": "IntradayReportRunner",
-      "projectPath": "D:\\WorkSpace\\PetroineosExercise\\IntradayReportServiceApp\\IntradayReportRunner\\IntradayReportRunner.csproj",
+      "projectPath": "D:\\WorkSpace\\GitHub\\IdeasForChange\\IntradayReportServiceApp\\IntradayReportRunner\\IntradayReportRunner.csproj",
       "packagesPath": "C:\\Users\\rajes\\.nuget\\packages\\",
-      "outputPath": "D:\\WorkSpace\\PetroineosExercise\\IntradayReportServiceApp\\IntradayReportRunner\\obj\\",
+      "outputPath": "D:\\WorkSpace\\GitHub\\IdeasForChange\\IntradayReportServiceApp\\IntradayReportRunner\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -1403,8 +1403,8 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "D:\\WorkSpace\\PetroineosExercise\\IntradayReportServiceApp\\IntradayReportService\\IntradayReportService.csproj": {
-              "projectPath": "D:\\WorkSpace\\PetroineosExercise\\IntradayReportServiceApp\\IntradayReportService\\IntradayReportService.csproj"
+            "D:\\WorkSpace\\GitHub\\IdeasForChange\\IntradayReportServiceApp\\IntradayReportService\\IntradayReportService.csproj": {
+              "projectPath": "D:\\WorkSpace\\GitHub\\IdeasForChange\\IntradayReportServiceApp\\IntradayReportService\\IntradayReportService.csproj"
             }
           }
         }

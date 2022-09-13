@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\WorkSpace\\PetroineosExercise\\IntradayReportServiceApp\\IntradayReportService\\IntradayReportService.csproj": {}
+    "D:\\WorkSpace\\GitHub\\IdeasForChange\\IntradayReportServiceApp\\IntradayReportService\\IntradayReportService.csproj": {}
   },
   "projects": {
-    "D:\\WorkSpace\\PetroineosExercise\\IntradayReportServiceApp\\IntradayReportService\\IntradayReportService.csproj": {
+    "D:\\WorkSpace\\GitHub\\IdeasForChange\\IntradayReportServiceApp\\IntradayReportService\\IntradayReportService.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\WorkSpace\\PetroineosExercise\\IntradayReportServiceApp\\IntradayReportService\\IntradayReportService.csproj",
+        "projectUniqueName": "D:\\WorkSpace\\GitHub\\IdeasForChange\\IntradayReportServiceApp\\IntradayReportService\\IntradayReportService.csproj",
         "projectName": "IntradayReportService",
-        "projectPath": "D:\\WorkSpace\\PetroineosExercise\\IntradayReportServiceApp\\IntradayReportService\\IntradayReportService.csproj",
+        "projectPath": "D:\\WorkSpace\\GitHub\\IdeasForChange\\IntradayReportServiceApp\\IntradayReportService\\IntradayReportService.csproj",
         "packagesPath": "C:\\Users\\rajes\\.nuget\\packages\\",
-        "outputPath": "D:\\WorkSpace\\PetroineosExercise\\IntradayReportServiceApp\\IntradayReportService\\obj\\",
+        "outputPath": "D:\\WorkSpace\\GitHub\\IdeasForChange\\IntradayReportServiceApp\\IntradayReportService\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
