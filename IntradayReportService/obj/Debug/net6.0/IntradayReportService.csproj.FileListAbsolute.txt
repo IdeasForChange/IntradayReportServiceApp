@@ -1,0 +1,14 @@
+D:\WorkSpace\PetroineosExercise\IntradayReportServiceApp\IntradayReportService\bin\Debug\net6.0\IntradayReportService.deps.json
+D:\WorkSpace\PetroineosExercise\IntradayReportServiceApp\IntradayReportService\bin\Debug\net6.0\IntradayReportService.dll
+D:\WorkSpace\PetroineosExercise\IntradayReportServiceApp\IntradayReportService\bin\Debug\net6.0\IntradayReportService.pdb
+D:\WorkSpace\PetroineosExercise\IntradayReportServiceApp\IntradayReportService\bin\Debug\net6.0\PowerService.dll
+D:\WorkSpace\PetroineosExercise\IntradayReportServiceApp\IntradayReportService\obj\Debug\net6.0\IntradayReportService.csproj.AssemblyReference.cache
+D:\WorkSpace\PetroineosExercise\IntradayReportServiceApp\IntradayReportService\obj\Debug\net6.0\IntradayReportService.GeneratedMSBuildEditorConfig.editorconfig
+D:\WorkSpace\PetroineosExercise\IntradayReportServiceApp\IntradayReportService\obj\Debug\net6.0\IntradayReportService.AssemblyInfoInputs.cache
+D:\WorkSpace\PetroineosExercise\IntradayReportServiceApp\IntradayReportService\obj\Debug\net6.0\IntradayReportService.AssemblyInfo.cs
+D:\WorkSpace\PetroineosExercise\IntradayReportServiceApp\IntradayReportService\obj\Debug\net6.0\IntradayReportService.csproj.CoreCompileInputs.cache
+D:\WorkSpace\PetroineosExercise\IntradayReportServiceApp\IntradayReportService\obj\Debug\net6.0\IntradayReportService.csproj.CopyComplete
+D:\WorkSpace\PetroineosExercise\IntradayReportServiceApp\IntradayReportService\obj\Debug\net6.0\IntradayReportService.dll
+D:\WorkSpace\PetroineosExercise\IntradayReportServiceApp\IntradayReportService\obj\Debug\net6.0\refint\IntradayReportService.dll
+D:\WorkSpace\PetroineosExercise\IntradayReportServiceApp\IntradayReportService\obj\Debug\net6.0\IntradayReportService.pdb
+D:\WorkSpace\PetroineosExercise\IntradayReportServiceApp\IntradayReportService\obj\Debug\net6.0\ref\IntradayReportService.dll
