@@ -5,6 +5,6 @@ namespace IntradayReportService.Workflows.Utilities
 {
     public interface ITradeAggregator
     {
-        PowerTrade? AggregateIntradayTrade(IEnumerable<PowerTrade> powerTrades);
+        PowerPeriod[] AggregateIntradayTrade(IEnumerable<PowerTrade> powerTrades);
     }
 }

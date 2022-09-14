@@ -27,22 +27,21 @@ namespace IntradayReportingService.Tests
         {
             // ARRANGE
             var tradeAggregator = new TradeAggregator();
-            var expectedResults = GetExpectedIntradayTradeAggregationResult();
+            var expectedPeriods = GetExpectedIntradayTradeAggregationResult();
 
             // ACT
-            var actualResults = tradeAggregator.AggregateIntradayTrade(GetDeterministicIntradayTradeData());
+            var actualPeriods = tradeAggregator.AggregateIntradayTrade(GetDeterministicIntradayTradeData());
 
             // ASSERT
-            Assert.IsNotNull(actualResults);
+            Assert.IsNotNull(actualPeriods);
 
             // Check if sequence are same
             // TODO: Check why this command is NOT working. In the meantime, using a different method
             // Assert.IsTrue(Enumerable.SequenceEqual<PowerPeriod>(expectedResult.Periods, actuals.Periods));
-
-            for (int i=0; i < expectedResults.Periods.Length; i++)
+            for (int i=0; i < expectedPeriods.Count(); i++)
             {
-                Assert.AreEqual(expectedResults.Periods[i].Period, actualResults.Periods[i].Period);
-                Assert.AreEqual(expectedResults.Periods[i].Volume, actualResults.Periods[i].Volume);
+                Assert.AreEqual(expectedPeriods[i].Period, actualPeriods[i].Period);
+                Assert.AreEqual(actualPeriods[i].Volume, actualPeriods[i].Volume);
             }
         }
 
@@ -68,7 +67,7 @@ namespace IntradayReportingService.Tests
             return new List<PowerTrade>() { powerTrade1, powerTrade2 };
         }
 
-        public PowerTrade GetExpectedIntradayTradeAggregationResult()
+        public PowerPeriod[] GetExpectedIntradayTradeAggregationResult()
         {
             // First sample example (ALL 100)
             var powerTrade = PowerTrade.Create(TradeDate, PowerPeriodCount);
@@ -80,7 +79,7 @@ namespace IntradayReportingService.Tests
             {
                 powerTrade.Periods[arrayIndex].Volume = 80;
             }
-            return powerTrade;
+            return powerTrade.Periods;
         }
     }
 }

@@ -4,6 +4,6 @@ namespace IntradayReportService.Workflows.Utilities
 {
     public interface IReportFormatter
     {
-        string FormatTwoColumnIntradayTrade(PowerTrade powerTrade);
+        string FormatTwoColumnIntradayTrade(PowerPeriod[] powerPeriods);
     }
 }

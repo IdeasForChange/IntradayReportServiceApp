@@ -2,9 +2,7 @@
 using Services;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace IntradayReportService.Workflows.Utilities
 {
@@ -19,25 +17,24 @@ namespace IntradayReportService.Workflows.Utilities
             Configuration = configuration;
         }
 
-        public string FormatTwoColumnIntradayTrade(PowerTrade powerTrade)
+        public string FormatTwoColumnIntradayTrade(PowerPeriod[] powerPeriods)
         {
-            if (powerTrade is null)
-                throw new ArgumentNullException($"Provided intraday trade object 'powerTrade' is null.");
+            if (powerPeriods is null)
+                throw new ArgumentNullException($"Provided intraday period object 'powerPeriods' is null.");
 
             StringBuilder results = new StringBuilder("\"Local Time\",\"Volume\"\n");
 
-            foreach (var item in powerTrade.Periods)
+            foreach (var period in powerPeriods)
             {
-                TimeSpan time = TimeSpan.FromHours(23 + (item.Period - 1));
+                TimeSpan time = TimeSpan.FromHours(23 + (period.Period - 1));
 
                 var data = new List<string>();
                 data.Add(time.ToString(ResultTimeFormat));
-                data.Add(item.Volume.ToString());
+                data.Add(period.Volume.ToString());
 
                 results.Append(string.Join(",", data));
                 results.Append("\n");
             }
-
             return results.ToString();
         }
     }
