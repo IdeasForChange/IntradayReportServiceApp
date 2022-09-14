@@ -1,6 +1,6 @@
 ﻿using Services;
 
-namespace IntradayReportRunner.Utilities
+namespace IntradayReportService.Workflows.Utilities
 {
     public interface IReportFormatter
     {

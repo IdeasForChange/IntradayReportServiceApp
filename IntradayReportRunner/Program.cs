@@ -1,6 +1,6 @@
-﻿using IntradayReportRunner.Utilities;
-using IntradayReportRunner.Workflows;
+﻿using IntradayReportRunner.Workflows;
 using IntradayReportService;
+using IntradayReportService.Workflows.Utilities;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;

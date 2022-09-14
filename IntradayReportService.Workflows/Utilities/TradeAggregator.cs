@@ -1,10 +1,9 @@
 ﻿using Services;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel.Design;
 using System.Linq;
 
-namespace IntradayReportRunner.Utilities
+namespace IntradayReportService.Workflows.Utilities
 {
     public class TradeAggregator : ITradeAggregator
     {
@@ -14,10 +13,10 @@ namespace IntradayReportRunner.Utilities
                 throw new ArgumentNullException($"Provided IEnumerable object 'powerTrades' is null.");
 
             var firstData = powerTrades.First();
-            
+
             // Create a resultant PowerTrade which will be returned back after aggregation result
             PowerTrade results = PowerTrade.Create(firstData.Date, firstData.Periods.Length);
-               
+
             // Just a simple check and making sure that the aggreagtion has to be done for same date  
             var allTrades = powerTrades.Where(p => p.Date == results.Date).SelectMany(p => p.Periods).ToList();
 

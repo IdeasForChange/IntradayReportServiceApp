@@ -1,10 +1,10 @@
-﻿using IntradayReportRunner.Utilities;
-using IntradayReportService;
+﻿using IntradayReportService;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Threading.Tasks;
 using System.IO;
+using IntradayReportService.Workflows.Utilities;
 
 namespace IntradayReportRunner.Workflows
 {

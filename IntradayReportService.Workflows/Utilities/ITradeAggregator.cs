@@ -1,7 +1,7 @@
 ﻿using Services;
 using System.Collections.Generic;
 
-namespace IntradayReportRunner.Utilities
+namespace IntradayReportService.Workflows.Utilities
 {
     public interface ITradeAggregator
     {

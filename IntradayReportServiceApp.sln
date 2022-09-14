@@ -5,15 +5,19 @@ VisualStudioVersion = 17.3.32825.248
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "01. User Interface", "01. User Interface", "{53E0CA86-1886-47FD-91DE-8FD622733D2B}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "02. Services", "02. Services", "{6E423800-6CD8-4895-9B21-480B71D81241}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "03. Services", "03. Services", "{6E423800-6CD8-4895-9B21-480B71D81241}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IntradayReportRunner", "IntradayReportRunner\IntradayReportRunner.csproj", "{A5651889-52A0-45B9-AC62-6E41D96EDD49}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IntradayReportService", "IntradayReportService\IntradayReportService.csproj", "{7803D1AF-EB7A-4AB6-87C2-DC09DD39677B}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "02.A. Tests", "02.A. Tests", "{EA2BA5CB-4ADF-49D9-A963-9CCE7CC6402E}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "04. Tests", "04. Tests", "{EA2BA5CB-4ADF-49D9-A963-9CCE7CC6402E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IntradayReportingService.Tests", "IntradayReportingService.Tests\IntradayReportingService.Tests.csproj", "{65C7B8AF-5644-43D6-BB3B-80A79819110A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IntradayReportingService.Tests", "IntradayReportingService.Tests\IntradayReportingService.Tests.csproj", "{65C7B8AF-5644-43D6-BB3B-80A79819110A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "02. Domain Objects", "02. Domain Objects", "{5AC9E9B2-B832-4A2B-998D-061D3641C658}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IntradayReportService.Workflows", "IntradayReportService.Workflows\IntradayReportService.Workflows.csproj", "{2C5662D2-8FE6-4A1A-BE38-473E30684CAE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +37,10 @@ Global
 		{65C7B8AF-5644-43D6-BB3B-80A79819110A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{65C7B8AF-5644-43D6-BB3B-80A79819110A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{65C7B8AF-5644-43D6-BB3B-80A79819110A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2C5662D2-8FE6-4A1A-BE38-473E30684CAE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2C5662D2-8FE6-4A1A-BE38-473E30684CAE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2C5662D2-8FE6-4A1A-BE38-473E30684CAE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2C5662D2-8FE6-4A1A-BE38-473E30684CAE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -40,8 +48,8 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{A5651889-52A0-45B9-AC62-6E41D96EDD49} = {53E0CA86-1886-47FD-91DE-8FD622733D2B}
 		{7803D1AF-EB7A-4AB6-87C2-DC09DD39677B} = {6E423800-6CD8-4895-9B21-480B71D81241}
-		{EA2BA5CB-4ADF-49D9-A963-9CCE7CC6402E} = {6E423800-6CD8-4895-9B21-480B71D81241}
 		{65C7B8AF-5644-43D6-BB3B-80A79819110A} = {EA2BA5CB-4ADF-49D9-A963-9CCE7CC6402E}
+		{2C5662D2-8FE6-4A1A-BE38-473E30684CAE} = {5AC9E9B2-B832-4A2B-998D-061D3641C658}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {A1227DFA-4D57-43F6-9B42-5AF62FEA0DDE}

@@ -1,4 +1,4 @@
-﻿using IntradayReportRunner.Utilities;
+﻿using IntradayReportService.Workflows.Utilities;
 using Services;
 
 namespace IntradayReportingService.Tests
@@ -23,20 +23,27 @@ namespace IntradayReportingService.Tests
         }
 
         [TestMethod]
-        public void AggregateIntradayTrade_UnderTest_ReturnsCorrectData()
+        public void AggregateIntradayTrade_ReturnsCorrectAggregatedData()
         {
             // ARRANGE
             var tradeAggregator = new TradeAggregator();
-            var expectedResult = GetExpectedIntradayTradeAggregationResult();
+            var expectedResults = GetExpectedIntradayTradeAggregationResult();
 
             // ACT
-            var actuals = tradeAggregator.AggregateIntradayTrade(GetDeterministicIntradayTradeData());
+            var actualResults = tradeAggregator.AggregateIntradayTrade(GetDeterministicIntradayTradeData());
 
             // ASSERT
-            Assert.IsNotNull(actuals);
+            Assert.IsNotNull(actualResults);
 
             // Check if sequence are same
-            Assert.IsTrue(Enumerable.SequenceEqual<PowerPeriod>(expectedResult.Periods, actuals.Periods));
+            // TODO: Check why this command is NOT working. In the meantime, using a different method
+            // Assert.IsTrue(Enumerable.SequenceEqual<PowerPeriod>(expectedResult.Periods, actuals.Periods));
+
+            for (int i=0; i < expectedResults.Periods.Length; i++)
+            {
+                Assert.AreEqual(expectedResults.Periods[i].Period, actualResults.Periods[i].Period);
+                Assert.AreEqual(expectedResults.Periods[i].Volume, actualResults.Periods[i].Volume);
+            }
         }
 
         public IEnumerable<PowerTrade> GetDeterministicIntradayTradeData()

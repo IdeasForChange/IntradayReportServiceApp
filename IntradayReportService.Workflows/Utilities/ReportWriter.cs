@@ -1,15 +1,15 @@
 ﻿using System;
 using System.IO;
 
-namespace IntradayReportRunner.Utilities
+namespace IntradayReportService.Workflows.Utilities
 {
-    internal class ReportWriter : IReportWriter
+    public class ReportWriter : IReportWriter
     {
         public void Write(string reportPathFullPath, string data)
         {
             FileInfo fileInfo = new FileInfo(reportPathFullPath);
 
-            if (string.IsNullOrEmpty(fileInfo.DirectoryName)) 
+            if (string.IsNullOrEmpty(fileInfo.DirectoryName))
                 throw new ArgumentNullException($"Directory Name is NULL or empty: {reportPathFullPath}");
 
             // Check if the directory exists. If not .. create the directory

@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace IntradayReportRunner.Utilities
+namespace IntradayReportService.Workflows.Utilities
 {
     public class ReportFormatter : IReportFormatter
     {
