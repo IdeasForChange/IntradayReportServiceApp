@@ -8,6 +8,7 @@
 # wget --no-check-certificate http://gist.githubusercontent.com/kmorcinek/2710267/raw/.gitignore
 
 # User-specific files
+*.vs/*
 *.suo
 *.user
 *.sln.docstates
@@ -222,3 +223,6 @@ project.lock.json
 #####
 # End of core ignore list, below put you custom 'per project' settings (patterns or path)
 #####
+.vs/ProjectEvaluation/intradayreportserviceapp.metadata.v5.1
+.vs/IntradayReportServiceApp/v17/*
+.vs/IntradayReportServiceApp/DesignTimeBuild/*

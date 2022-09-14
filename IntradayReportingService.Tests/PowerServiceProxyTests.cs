@@ -34,7 +34,7 @@ namespace IntradayReportingService.Tests
         {
             return new List<PowerTrade>()
             {
-
+                PowerTrade.Create(DateTime.Now, 24)
             };
         }
     }

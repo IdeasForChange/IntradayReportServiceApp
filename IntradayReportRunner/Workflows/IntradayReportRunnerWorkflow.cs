@@ -2,12 +2,8 @@
 using IntradayReportService;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
-using Services;
 using System;
-using System.Collections.Generic;
 using System.Threading.Tasks;
-using System.Linq;
-using System.Text;
 using System.IO;
 
 namespace IntradayReportRunner.Workflows
@@ -15,6 +11,8 @@ namespace IntradayReportRunner.Workflows
     public class IntradayReportRunnerWorkflow : IIntradayReportRunnerWorkflow
     {
         public IPowerServiceProxy PowerServiceProxy { get; }
+        public ITradeAggregator TradeAggregator { get; }
+        public IReportFormatter ReportFormatter { get; }
         public IConfiguration Configuration { get; }        
         public IReportWriter ReportWriter { get; }
         public ILogger<IntradayReportRunnerWorkflow> Logger { get; }
@@ -23,7 +21,6 @@ namespace IntradayReportRunner.Workflows
         public string ReportNamePattern => Configuration.GetValue<string>("IntradayReport:ReportNamePattern");
         public string DataFormat => Configuration.GetValue<string>("IntradayReport:DateFormat");
         public string TimeFormat => Configuration.GetValue<string>("IntradayReport:TimeFormat");
-        public string ResultTimeFormat => Configuration.GetValue<string>("IntradayReport:ResultTimeFormat"); 
 
         public string ReportName => ReportNamePattern.Replace(DataFormat.ToUpper(), DateTime.Now.ToString(DataFormat))
             .Replace(TimeFormat.ToUpper(), DateTime.Now.ToString(TimeFormat));
@@ -34,10 +31,14 @@ namespace IntradayReportRunner.Workflows
             ILogger<IntradayReportRunnerWorkflow> logger,
             IConfiguration configuration,
             IPowerServiceProxy powerServiceProxy,
+            ITradeAggregator tradeAggregator,
+            IReportFormatter reportFormatter,
             IReportWriter reportWriter
             )
         {
             PowerServiceProxy = powerServiceProxy;
+            TradeAggregator = tradeAggregator;
+            ReportFormatter = reportFormatter;
             Configuration = configuration;
             ReportWriter = reportWriter;
             Logger = logger;
@@ -45,7 +46,6 @@ namespace IntradayReportRunner.Workflows
 
         public async Task ExecuteAsync(DateTime date)
         {
-            // Workflow has two tasks
             Logger.LogInformation("Workflow Execution: STARTED");
 
             // 1. Fetch Data Asynchronously
@@ -54,60 +54,19 @@ namespace IntradayReportRunner.Workflows
             // 2. Write data to the CSV file
             if (powerTrades != null)
             {
-                // Created aggregated results
-                var aggregatedResults = AggreagatePowerTrades(powerTrades);
+                // 3. Created aggregated results
+                var aggregatedResults = TradeAggregator.AggregateIntradayTrade(powerTrades);
 
-                // Create the formatted results in String format
-                var formattedData= CreatedFormattedResults(aggregatedResults);
-
-                // Write the results
-                ReportWriter.WriteCsv(FullReportPath, formattedData);
-            }
-
-            Logger.LogInformation("Workflow Execution: COMPLETED");
-        }
-
-        private PowerTrade AggreagatePowerTrades(IEnumerable<PowerTrade> powerTrades)
-        {
-            PowerTrade results = null; 
-            foreach(PowerTrade powerTrade in powerTrades)
-            {
-                results ??= powerTrade;
-
-                if (results.Date == powerTrade.Date)
+                if(aggregatedResults != null)
                 {
-                    foreach(var powerPeriod in powerTrade.Periods)
-                    {
-                        foreach(var period in results.Periods)
-                        {
-                            if (period.Period == powerPeriod.Period)
-                            {
-                                period.Volume += powerPeriod.Volume;
-                            }
-                        }
-                    }
+                    // 4. Create the formatted results in String format
+                    var formattedData = ReportFormatter.FormatTwoColumnIntradayTrade(aggregatedResults);
+
+                    // 5. Write the results
+                    ReportWriter.Write(FullReportPath, formattedData);
                 }
             }
-            return results;
-        }
-
-        private string CreatedFormattedResults(PowerTrade powerTrade)
-        {
-            StringBuilder results = new StringBuilder("\"Local Time\",\"Volume\"\n");
-
-            foreach(var item in powerTrade.Periods)
-            {
-                TimeSpan time = TimeSpan.FromHours(23 + (item.Period-1));
-
-                var data = new List<string>();
-                data.Add(time.ToString(ResultTimeFormat));
-                data.Add(item.Volume.ToString());
-
-                results.Append(string.Join(",", data));
-                results.Append("\n");
-            }
-
-            return results.ToString();
+            Logger.LogInformation("Workflow Execution: COMPLETED");
         }
     }
 }

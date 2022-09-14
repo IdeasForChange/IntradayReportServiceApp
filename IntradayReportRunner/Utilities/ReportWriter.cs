@@ -1,15 +1,19 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 
 namespace IntradayReportRunner.Utilities
 {
     internal class ReportWriter : IReportWriter
     {
-        public void WriteCsv(string reportPathFullPath, string data)
+        public void Write(string reportPathFullPath, string data)
         {
             FileInfo fileInfo = new FileInfo(reportPathFullPath);
 
+            if (string.IsNullOrEmpty(fileInfo.DirectoryName)) 
+                throw new ArgumentNullException($"Directory Name is NULL or empty: {reportPathFullPath}");
+
             // Check if the directory exists. If not .. create the directory
-            if(!Directory.Exists(fileInfo.DirectoryName))
+            if (!Directory.Exists(fileInfo.DirectoryName))
             {
                 Directory.CreateDirectory(fileInfo.DirectoryName);
             }

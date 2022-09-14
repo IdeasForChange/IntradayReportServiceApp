@@ -2,6 +2,6 @@
 {
     public interface IReportWriter
     {
-        void WriteCsv(string reportPathFullPath, string data);
+        void Write(string reportPathFullPath, string data);
     }
 }

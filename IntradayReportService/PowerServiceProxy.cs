@@ -19,15 +19,19 @@ namespace IntradayReportService
         public IEnumerable<PowerTrade> GetTrades(DateTime date)
         {
             _logger.LogInformation("Calling GetTrades(): STARTED");
-            return _powerService.GetTrades(date);
+            var results = _powerService.GetTrades(date);
             _logger.LogInformation("Calling GetTrades(): COMPLETED");
+
+            return results;
         }
 
         public async Task<IEnumerable<PowerTrade>> GetTradesAsync(DateTime date)
         {
             _logger.LogInformation("Calling GetTradesAsync(): STARTED");
-            return await _powerService.GetTradesAsync(date);
+            var results = await _powerService.GetTradesAsync(date);
             _logger.LogInformation("Calling GetTradesAsync(): COMPLETED");
+
+            return results;
         }
     }
 }

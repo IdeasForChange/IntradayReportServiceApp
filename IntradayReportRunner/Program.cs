@@ -13,8 +13,7 @@ namespace IntradayReportRunner
 {
     public class Program
     {
-        private static IConfiguration Configuration { get; set; }
-        private static ILoggerFactory _loggerFactory;
+        private static readonly ILoggerFactory _loggerFactory;
         private static ILogger<Program> Logger { get; set; }
 
         private static string AppEnvironment { get; set; }
@@ -25,8 +24,9 @@ namespace IntradayReportRunner
             _loggerFactory = LoggerFactory.Create(builder => builder.AddConsole());
             Logger = _loggerFactory.CreateLogger<Program>();
 
-            // Log to show the application has started ...
-            Logger.LogInformation("In Program static method()");
+            // Identify if this application is running in a specific environment
+            AppEnvironment = Environment.GetEnvironmentVariable("DOTNET_ENVIRONMENT") ?? "dev";
+            Logger.LogInformation($"Application stating for environment: {AppEnvironment}");
         }
 
         public static async Task Main(string[] args)
@@ -36,10 +36,6 @@ namespace IntradayReportRunner
 
             // Set the environment base directory to the location from where this application is running
             Environment.CurrentDirectory = AppContext.BaseDirectory;
-
-            // Identify if this application is running in a specific environment
-            AppEnvironment = Environment.GetEnvironmentVariable("DOTNET_ENVIRONMENT") ?? "dev";
-            Logger.LogInformation($"Application stating for environment: {AppEnvironment}");
 
             // Initialise configuration builder
             var builder = new ConfigurationBuilder();
@@ -70,12 +66,13 @@ namespace IntradayReportRunner
             return Host.CreateDefaultBuilder(args)
                 .ConfigureServices((context, services) =>
                 {
-                    Configuration = context.Configuration;
-
                     // Inject dependencies
                     services.AddScoped<IPowerService, PowerService>();
                     services.AddScoped<IPowerServiceProxy, PowerServiceProxy>();
+                    services.AddScoped<IReportFormatter, ReportFormatter>();
                     services.AddScoped<IReportWriter, ReportWriter>();
+                    services.AddScoped<ITradeAggregator, TradeAggregator>();
+
                     services.AddScoped<IIntradayReportRunnerWorkflow, IntradayReportRunnerWorkflow>();
                 })
                 .Build();
