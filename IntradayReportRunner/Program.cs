@@ -5,6 +5,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Logging.Configuration;
+using Microsoft.Extensions.Logging.EventLog;
 using Services;
 using System;
 using System.Threading.Tasks;
@@ -43,18 +45,8 @@ namespace IntradayReportRunner
 
             var host = BuildHost(args);
 
-            // Instantiate Runner Workflow to execute the seuential workflow.
-            try
-            {
-                var workflow = host.Services.GetRequiredService<IIntradayReportRunnerWorkflow>();
-                await workflow.ExecuteAsync(DateTime.Now);
-            }
-            catch (Exception ex)
-            {
-                Logger.LogError($"INNER EXCEPTION  :   {ex.Message}");
-                Logger.LogError($"STACK TRACE      :   {ex.StackTrace}");
-                Environment.Exit(1);
-            }
+            // Run the Windows Service async task
+            await host.RunAsync();
 
             // Success .. exit 
             Logger.LogInformation("Program successfully completed!");
@@ -64,16 +56,26 @@ namespace IntradayReportRunner
         static IHost BuildHost(string[] args)
         {
             return Host.CreateDefaultBuilder(args)
+                .UseWindowsService(options =>
+                {
+                    options.ServiceName = ".NET Joke Service";
+                })
                 .ConfigureServices((context, services) =>
                 {
+                    LoggerProviderOptions.RegisterProviderOptions<EventLogSettings, EventLogLoggerProvider>(services);
+
                     // Inject dependencies
                     services.AddScoped<IPowerService, PowerService>();
                     services.AddScoped<IPowerServiceProxy, PowerServiceProxy>();
                     services.AddScoped<IReportFormatter, ReportFormatter>();
                     services.AddScoped<IReportWriter, ReportWriter>();
                     services.AddScoped<ITradeAggregator, TradeAggregator>();
-
                     services.AddScoped<IIntradayReportRunnerWorkflow, IntradayReportRunnerWorkflow>();
+                    services.AddHostedService<IntradayReportRunnerBackgroundService>();
+                })
+                .ConfigureLogging((context, logging) =>
+                {
+                    logging.AddConfiguration(context.Configuration.GetSection("Logging"));
                 })
                 .Build();
         }
